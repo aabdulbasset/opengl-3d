@@ -1,28 +1,70 @@
 
-
 #include <windows.h>
 #include <GL/glut.h>
+#include <cmath>
 #include <iostream>
 using namespace std;
 
-void display(){
-   // Draw a Red 1x1 Square centered at origin
-   glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
-      glColor3f(1.0f, 0.0f, 0.0f); // Red
-      glVertex2f(-0.5f, -0.5f);    // x, y
-      glVertex2f( 0.5f, -0.5f);
-      glVertex2f( 0.5f,  0.5f);
-      glVertex2f(-0.5f,  0.5f);
-   glEnd();
+void init(int argc, char** argv)
+{
 
-   glFlush();
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+	glutInitWindowSize(500, 500);
+	glutCreateWindow("3D Screen");
+	glEnable(GL_DEPTH_TEST);
 }
-int main()
-{             // Initialize GLUT
-   glutCreateWindow("OpenGL Setup Test"); // Create a window with the given title
-   glutInitWindowSize(320, 320);   // Set the window's initial width & height
-   glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
-   glutDisplayFunc(display); // Register display callback handler for window re-paint
-   glutMainLoop();           // Enter the event-processing loop
+
+
+
+
+void display() {
+   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clears color buffer just in case
+
+   glTranslatef(0.0,0.0,-5.0f);
+   glBegin(GL_QUADS);
+    glColor3f(1,0,0);
+    glVertex3f(-1.0,1.0,1.0);
+    glVertex3f(-1.0,1.0,-1.0);
+    glVertex3f(1.0,1.0,-1.0);
+    glVertex3f(1.0,1.0,1.0);
+
+    glColor3f(0,1,0);
+    glVertex3f(-1.0,1.0,-1.0);
+    glVertex3f(-1.0,-1.0,-1.0);
+    glVertex3f(1.0,-1.0,-1.0);
+    glVertex3f(1.0,1.0,-1.0);
+
+    glColor3f(0,0,1);
+    glVertex3f(-1.0,1.0,1.0);
+    glVertex3f(-1.0,-1.0,1.0);
+    glVertex3f(1.0,-1.0,1.0);
+    glVertex3f(1.0,1.0,1.0);
+
+    glColor3f(1,1,0);
+    glVertex3f(-1.0,1.0,1.0);
+    glVertex3f(-1.0,1.0,-1.0);
+    glVertex3f(1.0,1.0,-1.0);
+    glVertex3f(1.0,1.0,1.0);
+   glEnd();
+   glutSwapBuffers(); // executes commands
+
+}
+
+void reshape(int w,int h){
+    glViewport(0,0,w,h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(60,1,2,10);
+    glMatrixMode(GL_MODELVIEW);
+
+}
+
+int main(int argc, char** argv) {
+   init(argc, argv);
+   glutDisplayFunc(display);
+   glutReshapeFunc(reshape);
+   glutMainLoop();
+
    return 0;
 }
