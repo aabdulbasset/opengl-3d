@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <GL/glut.h>
 #include <cmath>
-#include <iostream>
+
 using namespace std;
 
 void init(int argc, char** argv)
@@ -19,6 +19,7 @@ float width = 0.15;
 int angle = 0;
 int xAxis=0;int yAxis=0;
 void display() {
+   glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clears color buffer just in case
    glMatrixMode(GL_MODELVIEW);
    glLoadIdentity();
@@ -26,14 +27,14 @@ void display() {
    glRotatef(angle,xAxis,yAxis,0);
    glBegin(GL_QUADS);
     //Top
-    glColor3f(0.1f, 0.1f, 0.1f);;
+    glColor3f(0.1f, 0.1f, 0.1f);
     glVertex3f(-1.0,1.0,0.15);
     glVertex3f(-1.0,1.0,-0.15);
     glVertex3f(1.0,1.0,-0.15);
     glVertex3f(1.0,1.0,0.15);
 
     //back
-    glColor3f(0.1f, 0.1f, 0.1f);;
+    glColor3f(0.1f, 0.1f, 0.1f);
     glVertex3f(-1.0,1.0,-0.15);
     glVertex3f(-1.0,-1.0,-0.15);
     glVertex3f(1.0,-1.0,-0.15);
@@ -41,31 +42,69 @@ void display() {
 
     //front
     glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0,1.0,0.15);
-    glVertex3f(-1.0,-1.0,0.15);
-    glVertex3f(1.0,-1.0,0.15);
-    glVertex3f(1.0,1.0,0.15);
+    glVertex3f(-0.9,0.9,0.15);
+    glVertex3f(-0.9,-0.9,0.15);
+    glVertex3f(0.9,-0.9,0.15);
+    glVertex3f(0.9,0.9,0.15);
 
     //bottom
-    glColor3f(0.1f, 0.1f, 0.1f);;
+    glColor3f(0.1f, 0.1f, 0.1f);
     glVertex3f(-1.0,-1.0,0.15);
     glVertex3f(-1.0,-1.0,-0.15);
     glVertex3f(1.0,-1.0,-0.15);
     glVertex3f(1.0,-1.0,0.15);
 
     //left
-    glColor3f(0.1f, 0.1f, 0.1f);;
+    glColor3f(0.1f, 0.1f, 0.1f);
     glVertex3f(1.0,-1.0,0.15);
     glVertex3f(1.0,-1.0,-0.15);
     glVertex3f(1.0,1.0,-0.15);
     glVertex3f(1.0,1.0,0.15);
 
     //right
-    glColor3f(0.1f, 0.1f, 0.1f);;
+    glColor3f(0.1f, 0.1f, 0.1f);
     glVertex3f(-1.0,-1.0,0.15);
     glVertex3f(-1.0,-1.0,-0.15);
     glVertex3f(-1.0,1.0,-0.15);
     glVertex3f(-1.0,1.0,0.15);
+
+    //--------------------------Holder------------------------
+    //Front
+    glColor3f(0.1f, 0.1f, 0.1f);
+    glVertex3f(-0.15,0,-0.15);
+    glVertex3f(-0.15,-2,-0.15);
+    glVertex3f(0.15,-2,-0.15);
+    glVertex3f(0.15,0,-0.15);
+
+    //Back
+    glColor3f(0.1f, 0.1f, 0.1f);
+    glVertex3f(-0.15,0,-0.30);
+    glVertex3f(-0.15,-2,-0.30);
+    glVertex3f(0.15,-2,-0.30);
+    glVertex3f(0.15,0,-0.30);
+
+    //Right
+    glColor3f(0.1f, 0.1f, 0.1f);
+    glVertex3f(0.15,0.0,-0.15);
+    glVertex3f(0.15,-2.0,-0.15);
+    glVertex3f(0.15,-2.0,-0.30);
+    glVertex3f(0.15,0.0,-0.30);
+
+    //Left
+    glColor3f(0.1f, 0.1f, 0.1f);
+    glVertex3f(-0.15,0.0,-0.15);
+    glVertex3f(-0.15,-2.0,-0.15);
+    glVertex3f(-0.15,-2.0,-0.30);
+    glVertex3f(-0.15,0.0,-0.30);
+
+    //----------------------------Base--------------------------
+    glColor3f(0.1f, 0.1f, 0.1f);
+    glVertex3f(-0.5,-2.0,0.15);
+    glVertex3f(0.5,-2.0,0.15);
+    glVertex3f(0.5,-2.0,-0.60);
+    glVertex3f(-0.5,-2.0,-0.60);
+
+
    glEnd();
    glutSwapBuffers(); // executes commands
 

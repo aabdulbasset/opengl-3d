@@ -1,12 +1,16 @@
 # depslib dependency file v1.0
-<<<<<<< HEAD
-1653603992 source:d:\uni\pcg\main.cpp
-=======
-1653604063 source:d:\uni\pcg\main.cpp
->>>>>>> zico-son-patch-2
-	<windows.h>
+1653330594 source:d:\uni\pcg\chair\main.cpp
+	<GL/gl.h>
 	<GL/glut.h>
-	<cmath>
+	"vertices.h"
+	<windows.h>
+
+1301111164 c:\program files (x86)\codeblocks\mingw\include\gl\gl.h
+
+976692172 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
 
 1301111162 c:\program files (x86)\codeblocks\mingw\include\windows.h
 	<winresrc.h>
@@ -212,14 +216,10 @@
 1301111156 c:\program files (x86)\codeblocks\mingw\include\oleidl.h
 	<objfwd.h>
 
-976692172 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
-	<windows.h>
-	<GL/gl.h>
-	<GL/glu.h>
-
-1301111164 c:\program files (x86)\codeblocks\mingw\include\gl\gl.h
-
 1301111164 c:\program files (x86)\codeblocks\mingw\include\gl\glu.h
 	<stddef.h>
 	<GL/gl.h>
+
+1653328103 d:\uni\pcg\chair\vertices.h
+	<iostream>
 
