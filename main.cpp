@@ -2,10 +2,10 @@
 #include <GL/glut.h>
 #include "vertices.h"
 
-float rotateX = -60, rotateY = 15, rotateZ = 0;   // rotation angle for chair
+float rotateX = -75, rotateY = 0, rotateZ = 0;   // rotation angle for chair
 float rotatesX = 0, rotatesY = 30, rotatesZ = 0;  // rotation angle for screen
-float sclaeX = 0.25, sclaeY = 0.25 , sclaeZ=0.25; // Set up scale for chair
-float sclaesX = 1, sclaesY = 1 , sclaesZ=1;       // Set up scale for screen
+float sclaeX = 0.25;                              // Set up scale for chair
+float sclaesX = 1;                              // Set up scale for chair
 float tx = 2, ty = 0, tz = -5;                    // Translate for chair
 float tsx = -2, tsy = 0, tsz = -5;                // Translate for screen
 float r =.9, g=1, b=1;
@@ -180,12 +180,12 @@ void specialKeyFunction(int key, int x, int y) {
     // Rest all values for default value for both screen && chair
     if ( key == GLUT_KEY_HOME )
        {
-        rotateX = -60, rotateY = 30, rotateZ = 0;
-        rotatesX = 0, rotatesY = 30, rotatesZ = 0;
-        sclaeX = 0.25, sclaeY = 0.25 , sclaeZ=0.25;
-        sclaesX = 1, sclaesY = 1 , sclaesZ=1;
-        tx = 2, ty = 0, tz = -5;
-        tsx = -2, tsy = 0, tsz = -5;
+        rotateX = -60; rotateY = 30; rotateZ = 0;
+        rotatesX = 0; rotatesY = 30; rotatesZ = 0;
+        sclaeX = 0.25;
+        sclaesX = 1;
+        tx = 2; ty = 0; tz = -5;
+        tsx = -2; tsy = 0; tsz = -5;
        }
        glutPostRedisplay();
 }
@@ -221,19 +221,16 @@ void keyPress(unsigned char button,int x,int y){
         tsz+=1;
         glutPostRedisplay();
         break;
+    case 27:       // ESC key
+         exit(0);
+         break;
     }
 }
 
 // initialization
 
-void initGL() {
-    glMatrixMode(GL_PROJECTION);
-    //glOrtho(-4, 4, -2, 2, -2, 2);  // simple orthographic projection
-    glMatrixMode(GL_MODELVIEW);
 
-}
-
- void reshape(int w,int h){
+ void initGL(int w,int h){
     glViewport(0,0,w,h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -306,11 +303,10 @@ int main(int argc, char** argv) {
     glutInitWindowSize(1000,1000);
     glutInitWindowPosition(200,20);
     glutCreateWindow("Good Bye Computer Graphics course 2022!");
-    glutReshapeFunc(reshape);
-
-    //initGL();
+    //glutReshapeFunc(initGL);
+    initGL(1000,1000);
     glutDisplayFunc(display);
-
+    glutFullScreen();
     glutMouseFunc(OnMouseClick);
     glutKeyboardFunc(keyPress);
     glutSpecialFunc(specialKeyFunction);
