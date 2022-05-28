@@ -19,7 +19,7 @@ void display() {
     glRotatef(rotatesX,1,0,0);
 	glRotatef(rotatesY,0,1,0);
 	glRotatef(rotatesZ,0,0,1);
-    glScalef(sclaesX,sclaesY,sclaesZ);
+    glScalef(sclaesX,sclaesX,sclaesX);
     glBegin(GL_QUADS);
     //Top
     glColor3f(0.1f, 0.1f, 0.1f);
